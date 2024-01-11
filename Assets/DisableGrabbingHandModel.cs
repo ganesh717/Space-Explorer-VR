@@ -5,8 +5,8 @@ using UnityEngine.XR;
 using UnityEngine.XR.Interaction.Toolkit;
 public class DisableGrabbingHandModel : MonoBehaviour
 {
-    public GameObject lefthandmodel;
-    public GameObject righthamdmodel;
+    public GameObject leftHandModel;
+    public GameObject rightHandModel;
     
     
     // Start is called before the first frame update
@@ -15,7 +15,7 @@ public class DisableGrabbingHandModel : MonoBehaviour
 
         XRGrabInteractable grabInteractable = GetComponent<XRGrabInteractable>();
         grabInteractable.selectEntered.AddListener(HideGrabbingHand);
-        grabInteractable.selectExited.AddListener(ShowingGrabbingHand);
+        grabInteractable.selectExited.AddListener(ShowGrabbingHand);
 
     }
     
@@ -23,23 +23,23 @@ public class DisableGrabbingHandModel : MonoBehaviour
     {
         if(args.interactorObject.transform.tag == "Left Hand")
         {
-           lefthandmodel.SetActive(false);            
+           leftHandModel.SetActive(false);            
         }
-          else if (args.interactorObject.transform.tag == "Right Hand")
+        else if(args.interactorObject.transform.tag == "Right Hand")
         {
-            righthamdmodel.SetActive(false);
+           rightHandModel.SetActive(false);
         }
     }
     
-       public void ShowingGrabbingHand(SelectExitEventArgs args)
+       public void ShowGrabbingHand(SelectExitEventArgs args)
     {
-        if (args.interactorObject.transform.tag == "Left Hand")
+        if(args.interactorObject.transform.tag == "Left Hand")
         {
-            lefthandmodel.SetActive(true);
+            leftHandModel.SetActive(true);
         }
         else if (args.interactorObject.transform.tag == "Right Hand")
         {
-            righthamdmodel.SetActive(true);
+            rightHandModel.SetActive(true);
         }
     }
 
