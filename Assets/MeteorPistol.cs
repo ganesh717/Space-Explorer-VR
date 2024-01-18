@@ -26,12 +26,15 @@ public class MeteorPistol : MonoBehaviour
 
     public void StartShoot()
     {
+        AudioManager.instance.Play("Pistol");
         Particles.Play();
         rayactivate = true;
     }
 
     public void StopShoot()
     {
+        AudioManager.instance.Stop("Pistol");
+
         Particles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         rayactivate = false;
     }
